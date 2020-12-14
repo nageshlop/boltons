@@ -52,11 +52,16 @@ matrix:
     - python: nightly
       arch: ppc64le
       dist: focal
-  
   allow_failures:
     - python: nightly
     - python: nightly
       arch: ppc64le
+jobs:
+  exclude:
+    - arch: ppc64le
+      python: "pypy"
+    - arch: ppc64le
+      python: "pypy3"
 install: "pip install -r requirements-test.txt"
 script: "py.test --doctest-modules boltons tests"
 branches:
